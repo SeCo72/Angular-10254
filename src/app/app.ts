@@ -1,11 +1,13 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
+import { TextAnalyzerComponent } from './text-analyzer/text-analyzer';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  standalone: true,
+  imports: [TextAnalyzerComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('analizador-texto');
+export class AppComponent {
+  title = 'analizador-texto';
 }

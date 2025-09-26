@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="header">
+    <h1>Analizador de Texto</h1>
+    <div class="info-personal">
+      <p><strong>Nombre Completo:</strong> {{nombreCompleto}}</p>
+      <p><strong>Número de Carné:</strong> {{numeroCarne}}</p>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h2>Ingresa tu texto para analizar:</h2>
+    
+    <textarea 
+      [(ngModel)]="texto"
+      placeholder="Escribe o pega aquí tu texto largo. Por ejemplo: El desarrollo de software requiere creatividad, paciencia y mucha dedicación para crear aplicaciones útiles..."
+      rows="8"
+      class="text-input">
+    </textarea>
+    
+    <div class="buttons">
+      <button 
+        (click)="analizarTexto()" 
+        class="btn-primary"
+        [disabled]="!texto.trim()">
+        Analizar Texto
+      </button>
+      
+      <button 
+        (click)="limpiarTodo()" 
+        class="btn-secondary">
+        Limpiar Todo
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="mostrarResultados" class="results-section">
+    <h2>Resultados del Análisis</h2>
+    
+    <div class="stats-grid">
+      <div class="stat-card blue">
+        <div class="stat-icon">📊</div>
+        <h3>Total de Palabras</h3>
+        <div class="stat-number">{{totalPalabras}}</div>
+        <p>palabras encontradas</p>
+      </div>
+      
+      <div class="stat-card green">
+        <div class="stat-icon">📏</div>
+        <h3>Palabra más Larga</h3>
+        <div class="stat-word">"{{palabraMasLarga}}"</div>
+        <p>{{palabraMasLarga.length}} caracteres</p>
+      </div>
+      
+      <div class="stat-card orange">
+        <div class="stat-icon">🔤</div>
+        <h3>Palabra más Corta</h3>
+        <div class="stat-word">"{{palabraMasCorta}}"</div>
+        <p>{{palabraMasCorta.length}} caracteres</p>
+      </div>
+    </div>
+  </div>
+</div>
